@@ -18,7 +18,7 @@
   <body>
     <div class="game-box"><canvas id="canvas" width="400" height="400"></canvas></div>
     <div class="game-info">
-        <h2>Preven default</h2>
+        <h2>Removing scrolling</h2>
         <p id="game-status"></p>
         <p id="game-score"></p>
     </div>
@@ -43,6 +43,10 @@
         document.addEventListener("keydown", keyDownEvent);
         document.addEventListener('touchstart', handleTouchStart, false);        
         document.addEventListener('touchmove', handleTouchMove, false);
+        document.addEventListener("touchmove", function (e) {
+            e.preventDefault();
+        }, { passive: false });
+    
 
         gameControl = startGame(x);
       };
