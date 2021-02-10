@@ -27,10 +27,10 @@
       // render X times per second
       var x = 8;
       
-      const CANVAS_BORDER_COLOUR = 'black';
-      const CANVAS_BACKGROUND_COLOUR = "white";
-      const SNAKE_COLOUR = 'lightgreen';
-      const SNAKE_BORDER_COLOUR = 'darkgreen';
+      const CANVAS_BORDER_COLOR = 'black';
+      const CANVAS_BACKGROUND_COLOR = "white";
+      const SNAKE_COLOR = 'blue';
+      const SNAKE_BORDER_COLOR = 'darkgreen';
 
 
       window.onload = function() {
@@ -109,9 +109,9 @@
         }
 
         //  Select the colour to fill the canvas
-      ctx.fillStyle = CANVAS_BACKGROUND_COLOUR;
+      ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
       //  Select the colour for the border of the canvas
-      ctx.strokestyle = CANVAS_BORDER_COLOUR;
+      ctx.strokestyle = CANVAS_BORDER_COLOR;
 
       // Draw a "filled" rectangle to cover the entire canvas
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -119,8 +119,8 @@
       ctx.strokeRect(0, 0, canvas.width, canvas.height);
 
         // paint snake
-        ctx.fillStyle = SNAKE_COLOUR;
-        ctx.strokestyle = SNAKE_BORDER_COLOUR;
+        ctx.fillStyle = SNAKE_COLOR;
+        ctx.strokestyle = SNAKE_BORDER_COLOR;
         for (var i = 0; i < snakeTrail.length; i++) {
           ctx.fillRect(
             snakeTrail[i].x * tileSize,
