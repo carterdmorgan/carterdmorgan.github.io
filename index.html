@@ -29,7 +29,8 @@
     <script>
       var canvas, ctx, gameControl, gameActive;
       // render X times per second
-      var x = 8;
+      var defaultRendersPerSecond = 8;
+      var rendersPerSecond = defaultRendersPerSecond;
       
       const CANVAS_BORDER_COLOR = 'black';
       const CANVAS_BACKGROUND_COLOR = "white";
@@ -59,31 +60,30 @@
           location.reload();
         })
 
-        gameControl = startGame(x);
+        gameControl = startGame(rendersPerSecond);
       };
       
       /* function to start the game */
-      function startGame(x) {
-        // setting gameActive flag to true
+      function startGame(initialRendersPerSecond) {
         gameActive = true;
         document.getElementById("game-status").innerHTML = "<small>Game Started</small>";
         document.getElementById("game-score").innerHTML = "";
-        return setInterval(draw, 1000 / x);
+        console.log('starting game with', initialRendersPerSecond)
+        return setInterval(draw, 1000 / initialRendersPerSecond);
       }
       
       function pauseGame() {
-        // setting gameActive flag to false
         clearInterval(gameControl);
         gameActive = false;
         document.getElementById("game-status").innerHTML = "<small>Game Paused</small>";
       }
       
-      function endGame(x) {
-        // setting gameActive flag to false
+      function endGame(tailSize) {
         clearInterval(gameControl);
+        rendersPerSecond = defaultRendersPerSecond;
         gameActive = false;
         document.getElementById("game-status").innerHTML = "<small>Game Over</small>";
-        document.getElementById("game-score").innerHTML = "<h1>Score: " + x + "</h1>";
+        document.getElementById("game-score").innerHTML = "<h1>Score: " + tailSize + "</h1>";
       }
 
       // game world
@@ -126,6 +126,10 @@
 
           appleX = Math.floor(Math.random() * gridSize);
           appleY = Math.floor(Math.random() * gridSize);
+
+          // clearInterval(gameControl);
+          // rendersPerSecond += 0.5;
+          // gameControl = setInterval(draw, 1000 / rendersPerSecond);
         }
 
         //  Select the colour to fill the canvas
@@ -244,7 +248,7 @@
               pauseGame();
             }
             else {
-              gameControl = startGame(x);
+              gameControl = startGame(rendersPerSecond);
             }
             break;
         }
