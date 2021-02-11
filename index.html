@@ -20,7 +20,7 @@
       <canvas id="canvas" width="324" height="324"></canvas>
     </div>
     <div class="game-info">
-      <h2 id="header">Welcome! Use the arrow keys to begin!</h2>
+      <h2 id="header">Hi Tim!</h2>
       <p id="game-status"></p>
       <p id="game-score"></p>
       <button id="new-game">New Game</button>
@@ -34,7 +34,7 @@
       
       const CANVAS_BORDER_COLOR = 'black';
       const CANVAS_BACKGROUND_COLOR = "white";
-      const SNAKE_COLOR = 'lightgreen';
+      const SNAKE_COLOR = 'yellow';
       const SNAKE_BORDER_COLOR = 'darkgreen';
 
       var xDown = null;                                                        
@@ -127,9 +127,9 @@
           appleX = Math.floor(Math.random() * gridSize);
           appleY = Math.floor(Math.random() * gridSize);
 
-          // clearInterval(gameControl);
-          // rendersPerSecond += 0.5;
-          // gameControl = setInterval(draw, 1000 / rendersPerSecond);
+          clearInterval(gameControl);
+          rendersPerSecond += 2;
+          gameControl = setInterval(draw, 1000 / rendersPerSecond);
         }
 
         //  Select the colour to fill the canvas
